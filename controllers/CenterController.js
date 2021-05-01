@@ -3,34 +3,34 @@ const Center = require('../models/Center');
 
 
 function create(req, res){ 
-    const user = new User();
+    const center = new Center();
     const params = req.body;
 
-    user.firstName = params.firstName;
-    user.lastName = params.lastName;
-    user.email = params.email;
-    user.age = params.age;  
-    user.role = params.role;
+    center.Name = params.Name;
+    center.adress = params.adress;
+    center.email = params.email;
+    center.phone = params.phone;  
+    center.latitude = params.latitude;
+    center.longitude = params.longitude;
 
-
- user.save((error, userCreated) => {
+    center.save((error, centerCreated) => {
       if(error){
           res.status(500).send({
               statusCode : 500,
-              message: "Error en el servidor"
+              message: "Error in the server"
           })
       }else{
-          if(!userCreated){
+          if(!centerCreated){ 
               res.status(400).send({
                   statusCode: 400, 
-                  message: "Error al insertar el usuario"
+                  message: "Error creating the center"
               })
     
           }else{  
               res.status(200).send({
                   statusCode: 200,
-                  message :"Usuario alamacenado correctamente", 
-                  dataUser: userCreated 
+                  message :"Center created successfully", 
+                  dataUser: centerCreated 
               })
           }
       }     
@@ -41,26 +41,26 @@ function create(req, res){
 
 function update(req,res){
    const parameters = req.body;
-   const idUser = req.params.idUser;   
+   const idCenter = req.params.Center;   
 
-   User.findByIdAndUpdate(idUser , parameters, (error, userUpdated) => {
+   center.findByIdAndUpdate(idCenter , parameters, (error, userUpdated) => {
        if(error){
           res.status(500).send({
               statusCode: 500, 
-              message: "Error en el servidor"
+              message: "Error in the server"
               
               
           })
        }else{
-           if(!userUpdated){
+           if(!centerUpdated){
                res.status(400).send({
                    statusCode: 400,
-                   message: "Error al actualizar el usuario"
+                   message: "Error updating the center"
                })
            }else{
                res.status(200).send({
                    statusCode: 200,
-                   message:"Usuario actaulizado correctamentes"
+                   message:"Center uptdated successfully"
                })
            }
        }
@@ -69,43 +69,42 @@ function update(req,res){
 
 
 function remove(req, res){
-     const idUser = req.params.idUser;
+     const idcenter = req.params.idCenter;
 
-     User.findByIdAndDelete( idUser, (error, userRemoved) =>{
+     Center.findByIdAndDelete( idCenter, (error, centerRemoved) =>{
          if(error){
              res.status(500).send({
                  statusCode: 500, 
-                 message:"Error en el servidor"
+                 message:"Error in the server"
              })
          }else{
-             if(!userRemoved){
+             if(!centerRemoved){
                  res.status(400).send({
                      statusCode:400, 
-                     message:"Error al eliminar el usuario"
+                     message:"Error deleting center"
                  })
              }else{
                  res.status(200).send({
                      statusCode:200,
-                     message: "Usuario eliminado correctamente"
+                     message: "Center deleted successfully"
                  })
              }
          }
      } )
 }
   
-function getAllUsers(req, res){
-    const role = req.params.role;
-    User.find({ role: role}, (error, allUsers) => {
+function getAllCenters(req, res){
+    Center.find({}, (error, allCenters) => {
         if (error){
             res.status(500).send({
             statusCode: 500, 
-            message: "Error al servidor"
+            message: "Error in server"
             })
         }else{
             res.status(200).send({
                 statusCode: 200, 
-                message: "Todos los usuarios", 
-                allUsers: allUsers
+                message: "All the servers", 
+                allCenters: allCenters
             })
         }
         })
@@ -117,7 +116,6 @@ module.exports = {
     create,
     update, 
     remove,
-    getAllUsers
-     
+    getAllCenters     
 
 }

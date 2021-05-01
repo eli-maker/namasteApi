@@ -6,8 +6,8 @@ var CenterSchema = new Schema({
     Adress: String,
     email: String, 
     Phone: Number,
-    log: Number, 
-    lat: Number
+    longitude: Number, 
+    latitude: Number
 
 });
 
