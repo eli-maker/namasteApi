@@ -7,11 +7,10 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   (error, res) => {
     if (error) {
-      console.log("Error de conexion", error);
+      console.log("Connection error", error);
     } else {
-      console.log("Nos conectamos correctamente...");
       app.listen(port, () => {
-        console.log("Escuchando el puerto", port);
+        console.log("Server running on port", port);
       });
     }
   }
