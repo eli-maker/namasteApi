@@ -52,9 +52,7 @@ function update(req,res){
        if(error){
           res.status(500).send({
               statusCode: 500, 
-              message: "Error en el servidor"
-              
-              
+              message: "Error en el servidor"    
           })
        }else{
            if(!userUpdated){
@@ -65,7 +63,7 @@ function update(req,res){
            }else{
                res.status(200).send({
                    statusCode: 200,
-                   message:"Usuario actaulizado correctamentes"
+                   message:"Usuario actaulizado correctamente"
                })
            }
        }

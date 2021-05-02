@@ -41,15 +41,13 @@ function create(req, res){
 
 function update(req,res){
    const parameters = req.body;
-   const idCenter = req.params.Center;   
+   const idCenter = req.params.idCenter;   
 
-   center.findByIdAndUpdate(idCenter , parameters, (error, userUpdated) => {
+   Center.findByIdAndUpdate(idCenter , parameters, (error, centerUpdated) => {
        if(error){
           res.status(500).send({
               statusCode: 500, 
               message: "Error in the server"
-              
-              
           })
        }else{
            if(!centerUpdated){
@@ -69,7 +67,7 @@ function update(req,res){
 
 
 function remove(req, res){
-     const idcenter = req.params.idCenter;
+     const idCenter = req.params.idCenter;
 
      Center.findByIdAndDelete( idCenter, (error, centerRemoved) =>{
          if(error){
