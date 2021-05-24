@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const CenterSchema = new Schema({
-  Name: String,
-  Adress: String,
+  name: String,
+  adress: String,
   email: String,
-  Phone: Number,
+  phone: Number, 
   longitude: Number,
   latitude: Number,
 });

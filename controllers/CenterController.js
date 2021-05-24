@@ -4,7 +4,7 @@ function create(req, res) {
   const center = new Center();
   const params = req.body;
 
-  center.Name = params.Name;
+  center.name = params.name;
   center.adress = params.adress;
   center.email = params.email;
   center.phone = params.phone;
@@ -27,7 +27,7 @@ function create(req, res) {
         res.status(200).send({
           statusCode: 200,
           message: "Center created successfully",
-          dataUser: centerCreated,
+          dataCenter: centerCreated,
         });
       }
     }
