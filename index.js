@@ -1,9 +1,11 @@
+const config = require("./config"); 
+
 const mongoose = require("mongoose");
 const app = require("./app");
 const port = process.env.PORT || 3000;
 
 mongoose.connect(
-  "mongodb://localhost:27017/namasteconnections",
+  config.mongoDB,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (error, res) => {
     if (error) {
